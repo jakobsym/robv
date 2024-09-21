@@ -1,0 +1,22 @@
+{
+  "name": "robv",
+  "version": "1.0.0",
+  "description": "Set Up a Solana Development Environment:",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "commander": "^12.1.0",
+    "figlet": "^1.7.0",
+    "inquirer": "^10.2.2",
+    "ora": "^8.1.0"
+  },
+  "bin": {
+    "my-node-cli": "./index.js"
+  },
+  "type": "module"
+}
