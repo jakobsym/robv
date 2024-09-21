@@ -16,7 +16,7 @@
     "ora": "^8.1.0"
   },
   "bin": {
-    "my-node-cli": "./index.js"
+    "robv": "./bin/index.js"
   },
   "type": "module"
 }
