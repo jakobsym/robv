@@ -1,21 +1,16 @@
-import { program } from "commander";
-import { showGreeting } from "../utils/greeting.js";
+import { showGreeting, tokenAddressFromArgs } from "../utils/greeting.js";
 
 export const runCLI = async() =>  {
     try {
         await showGreeting()
-
-     // cli logic
-    program
-    .version("0.0.0")
-    .description("Raydium Orderbook Viewer")
-    .option("-n, --name <type>", "Add your name")
-    .action((options) => {
-        console.log(`Hey, ${options.name}!`);
-    });
-    program.parse(process.argv);
-        
+        let tokenAddress = tokenAddressFromArgs();
     } catch (error) {
         console.error(error)
     }
+}
+
+// uses project-serum DEX to fetch orderbook data (bids/asks + size)
+// TODO: How will end user see data so its meaningful?
+const getOrderBookData = async(tokenAddress) => {
+    
 }
