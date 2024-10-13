@@ -1,16 +1,36 @@
-import { showGreeting, tokenAddressFromArgs } from "../utils/greeting.js";
+import { error } from "console";
+import { showGreeting  } from "../utils/greeting.js";
+import { baseMintAddressFromArgs, quoteMintFromArgs } from "../utils/helper.js"
+import { getOrderBookData, getOrderBookMarketAddress } from "./serum_scripts.js";
 
 export const runCLI = async() =>  {
+    var pairMap = {}
     try {
         await showGreeting()
-        let tokenAddress = tokenAddressFromArgs();
+        pairMap = await fetchPairAddress()
+        //let obMarketAddress = await getOrderBookMarketAddress(pairMap['baseMintAddress'], pairMap['quoteMintAddress'])
+        //let obData = await getOrderBookData(obMarketAddress)
     } catch (error) {
         console.error(error)
     }
 }
 
-// uses project-serum DEX to fetch orderbook data (bids/asks + size)
-// TODO: How will end user see data so its meaningful?
-const getOrderBookData = async(tokenAddress) => {
-    
+// returns pair as hashmap for quick lookup
+const fetchPairAddress = async() => {
+    var baseMintAddress, quoteMintAddress
+
+    try {
+        quoteMintAddress = await quoteMintFromArgs()
+        baseMintAddress = await baseMintAddressFromArgs()
+    } catch (error) {
+        console.error("error fething pair from CLI ", error)
+    }
+
+    if (quoteMintAddress || baseMintAddress === undefined) {
+        console.error("error fetching addresses from CLI")
+    }
+    return {
+        BaseMintAddress: baseMintAddress,
+        QuoteMintAddress: quoteMintAddress,
+    }
 }

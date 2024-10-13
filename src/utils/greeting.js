@@ -1,6 +1,4 @@
 import figlet from "figlet";
-import inquirer from "inquirer";
-import { program } from "commander";
 
 export const showGreeting = () => {
     return new Promise((resolve, reject) => {
@@ -25,24 +23,3 @@ export const showGreeting = () => {
       );
     });
 };
-
-// gets token address from CLI args
-// returns: String
-export const tokenAddressFromArgs = () => {
-  var tokenAddress
-  program.action(() => {
-      inquirer
-        .prompt([
-          {
-            type: "input",
-            name: "tokenAddress",
-            message: "Enter CA:",
-          },
-        ])
-        .then((answers) => {
-          tokenAddress = answers.tokenAddress;
-        });
-    });
-  program.parse();
-  return tokenAddress;
-}
