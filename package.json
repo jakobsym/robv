@@ -11,7 +11,7 @@
   "license": "ISC",
   "dependencies": {
     "@project-serum/serum": "^0.13.65",
-    "@solana/web3.js": "^2.0.0-rc.1",
+    "@solana/web3.js": "^1.95.3",
     "commander": "^12.1.0",
     "figlet": "^1.7.0",
     "inquirer": "^10.2.2",
